@@ -23,7 +23,7 @@ my %test_cases = (
 );
 
 # Test leap year bases on hash above. with year as key and value as true/false
-for my $year (sort keys %test_cases) {
+for my $year (keys %test_cases) {
     my $want = $test_cases{$year};
     my $is_leap = MyDate->is_leap_year($year);
     my $expect_string = $test_cases{$year} ? 'true' : 'false';
