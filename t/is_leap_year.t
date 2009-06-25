@@ -22,8 +22,13 @@ my %test_cases = qw{
 	2004  1 
 };
 
+# Test leap year bases on hash above. with year as key and value as true/false
 for my $year (sort keys %test_cases) {
-	is($test_cases{$year}, MyDate->is_leap_year($year), "year $year is " . ($test_cases{$year} ? 'true' : 'false'));
+    my $want = $test_cases{$year};
+    my $is_leap = MyDate->is_leap_year($year);
+    my $expect_string = $test_cases{$year} ? 'true' : 'false';
+    
+	is(!!$is_leap, !!$want, "is_leap_year($year)");
 }
 
 is(MyDate->is_leap_year(undef), undef, "Undef comes back as undef to signify a possible error");
