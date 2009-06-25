@@ -41,15 +41,15 @@ my %days_this_year_by_month = qw(
     1  0
     2  31 
     3  59 
-    4  89 
+    4  90 
     5  120 
     6  151 
     7  181 
-    8  211 
+    8  212
     9  243 
     10  273
     11 304 
-    12 333 
+    12 334 
 );
 
 
@@ -71,7 +71,7 @@ sub  day_of_week {
     
     # Calc Days in months so far;
     my $month_days = $days_this_year_by_month{$wants_month};
-    $month_days++ if($wants_month > 2 &&  $class->is_leap_year($wants_month));
+    $month_days++ if($wants_month > 2 &&  $class->is_leap_year($wants_year));
     
     my $days_since_1900 = $year_days + $month_days + $wants_day;
     my $dow_found = $days_since_1900 % 7;
