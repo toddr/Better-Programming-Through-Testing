@@ -8,6 +8,9 @@ use_ok('MyDate');
 my %test_cases = qw{
     0     1
     0004  1
+    0100  0 
+    0400  1
+    1900  0
 	1996  1
 	1997  0
 	1998  0
@@ -20,7 +23,7 @@ my %test_cases = qw{
 };
 
 for my $year (sort keys %test_cases) {
-	is($test_cases{$year}, MyDate->is_leap_year($year), "Test Leap year for $year should be $test_cases{$year}");
+	is($test_cases{$year}, MyDate->is_leap_year($year), "year $year is " . ($test_cases{$year} ? 'true' : 'false'));
 }
 
 is(MyDate->is_leap_year(undef), undef, "Undef comes back as undef to signify a possible error");
