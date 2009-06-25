@@ -63,8 +63,10 @@ sub  day_of_week {
 
     # Calc years since $year_days
     my $year_days = ($wants_year - 1900) * 365; 
-    for(1900..($wants_year-1)) {
-        $year_days++ if($class->is_leap_year($_));
+    if($wants_year != 1900) {
+        for(1900..($wants_year-1)) {
+            $year_days++ if($class->is_leap_year($_));
+        }
     }
     
     # Calc Days in months so far;
